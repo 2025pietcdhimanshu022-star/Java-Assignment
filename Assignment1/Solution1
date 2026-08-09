@@ -1,0 +1,55 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class StudentMarks {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.print("Enter marks for Subject 1: ");
+        int sub1 = Integer.parseInt(br.readLine());
+
+        System.out.print("Enter marks for Subject 2: ");
+        int sub2 = Integer.parseInt(br.readLine());
+
+        System.out.print("Enter marks for Subject 3: ");
+        int sub3 = Integer.parseInt(br.readLine());
+
+        System.out.print("Enter marks for Subject 4: ");
+        int sub4 = Integer.parseInt(br.readLine());
+
+        System.out.print("Enter marks for Subject 5: ");
+        int sub5 = Integer.parseInt(br.readLine());
+
+        int total = sub1 + sub2 + sub3 + sub4 + sub5;
+
+        double percentage = (double) total / 500 * 100;
+
+        String grade;
+
+        if (percentage >= 90) {
+            grade = "A+";
+        } else if (percentage >= 80) {
+            grade = "A";
+        } else if (percentage >= 70) {
+            grade = "B";
+        } else if (percentage >= 60) {
+            grade = "C";
+        } else if (percentage >= 50) {
+            grade = "D";
+        } else {
+            grade = "Fail";
+        }
+
+        System.out.println("Total Marks: " + total);
+        System.out.println("Percentage: " + percentage + "%");
+        System.out.println("Grade: " + grade);
+
+        if (percentage >= 50) {
+            System.out.println("Result: Passed");
+        } else {
+            System.out.println("Result: Failed");
+        }
+    }
+}
