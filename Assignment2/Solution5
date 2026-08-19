@@ -1,0 +1,94 @@
+import java.util.Scanner;
+
+interface Payment {
+    void makePayment(double amount);
+    void paymentDetails();
+}
+
+class CreditCardPayment implements Payment {
+    String cardNumber, cardHolder;
+
+    CreditCardPayment(String no, String name) {
+        cardNumber = no;
+        cardHolder = name;
+    }
+
+    public void makePayment(double amount) {
+        System.out.println("Payment Successful!");
+        System.out.println("Payment Mode: Credit Card");
+        System.out.println("Card Holder: " + cardHolder);
+        System.out.println("Amount: Rs. " + amount);
+    }
+
+    public void paymentDetails() {
+        System.out.println("Card Number: " + cardNumber);
+    }
+}
+
+class UPIPayment implements Payment {
+    String upiId, userName;
+
+    UPIPayment(String id, String name) {
+        upiId = id;
+        userName = name;
+    }
+
+    public void makePayment(double amount) {
+        System.out.println("Payment Successful!");
+        System.out.println("Payment Mode: UPI");
+        System.out.println("UPI ID: " + upiId);
+        System.out.println("Amount: Rs. " + amount);
+    }
+
+    public void paymentDetails() {
+        System.out.println("User Name: " + userName);
+    }
+}
+
+class CashPayment implements Payment {
+    String customerName;
+
+    CashPayment(String name) {
+        customerName = name;
+    }
+
+    public void makePayment(double amount) {
+        System.out.println("Payment Successful!");
+        System.out.println("Payment Mode: Cash");
+        System.out.println("Customer: " + customerName);
+        System.out.println("Amount: Rs. " + amount);
+    }
+
+    public void paymentDetails() {
+        System.out.println("Customer Name: " + customerName);
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("----- PAYMENT SYSTEM -----");
+        System.out.println("1. Credit Card");
+        System.out.println("2. UPI");
+        System.out.println("3. Cash");
+        System.out.print("Enter Choice: ");
+        int choice = sc.nextInt();
+
+        System.out.print("Enter Amount: ");
+        double amount = sc.nextDouble();
+
+        Payment p;
+
+        if (choice == 1) {
+            p = new CreditCardPayment("123456", "Rahul");
+        } else if (choice == 2) {
+            p = new UPIPayment("rahul@upi", "Rahul");
+        } else {
+            p = new CashPayment("Rahul");
+        }
+
+        p.paymentDetails();
+        p.makePayment(amount);
+    }
+}
